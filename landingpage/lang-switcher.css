@@ -1,0 +1,92 @@
+/* =========================================================================
+   Language Switcher
+   ========================================================================= */
+
+.lang-switcher {
+    position: relative;
+}
+
+.lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: color 0.2s var(--ease-out-quad), border-color 0.2s var(--ease-out-quad), background 0.2s var(--ease-out-quad);
+}
+
+.lang-btn:hover {
+    color: #fff;
+    border-color: var(--border-hover);
+    background: rgba(48, 80, 255, 0.08);
+}
+
+.lang-btn svg {
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+.lang-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 130px;
+    background: rgba(18, 24, 42, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-hover);
+    border-radius: var(--radius-sm);
+    padding: 6px;
+    z-index: 200;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.lang-menu.open {
+    display: block;
+}
+
+.lang-menu a {
+    display: block;
+    padding: 8px 12px;
+    color: var(--text-dim);
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: color 0.15s var(--ease-out-quad), background 0.15s var(--ease-out-quad);
+}
+
+.lang-menu a:hover {
+    color: #fff;
+    background: rgba(48, 80, 255, 0.12);
+}
+
+.lang-menu a.active {
+    color: var(--primary-light);
+    background: rgba(48, 80, 255, 0.08);
+}
+
+/* Mobile: show lang switcher + hamburger side by side */
+.nav-right-mobile {
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 640px) {
+    .nav-right-mobile {
+        display: flex;
+    }
+
+    /* Hide the lang switcher inside .nav-links on mobile (it's in nav-right-mobile instead) */
+    .nav-links .lang-switcher {
+        display: none;
+    }
+}

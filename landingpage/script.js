@@ -474,6 +474,22 @@ function initNoiseOverlay() {
   loop();
 }
 
+// --- Language Switcher ---
+function toggleLangMenu() {
+  document.querySelectorAll('.lang-menu').forEach(function(menu) {
+    menu.classList.toggle('open');
+  });
+}
+
+// Close lang menu when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.lang-switcher')) {
+    document.querySelectorAll('.lang-menu').forEach(function(menu) {
+      menu.classList.remove('open');
+    });
+  }
+});
+
 // --- Initialize ---
 document.addEventListener("DOMContentLoaded", () => {
   const detectedPlatform = detectPlatform();

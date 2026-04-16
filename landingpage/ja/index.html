@@ -1,31 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hermes Agent — An Agent That Grows With You</title>
+    <title>Hermes Agent — あなたと共に成長するAIエージェント</title>
     <meta
       name="description"
-      content="An open-source agent that grows with you — learns your projects, builds its own skills, and reaches you wherever you are. By Nous Research."
+      content="あなたと共に成長するオープンソースエージェント — プロジェクトを学習し、自らスキルを構築し、あらゆる場所であなたに寄り添います。Nous Research開発。"
     />
     <meta name="theme-color" content="#0A0E1A" />
 
-    <meta property="og:title" content="Hermes Agent — AI Agent Framework" />
+    <meta property="og:title" content="Hermes Agent — AIエージェントフレームワーク" />
     <meta
       property="og:description"
-      content="An open-source agent that grows with you. Install it, give it your messaging accounts, and it becomes a persistent personal agent — learning your projects, building its own skills, and reaching you wherever you are."
+      content="あなたと共に成長するオープンソースエージェント。インストールして、メッセージングアカウントを接続するだけで、プロジェクトを学習し、自らスキルを構築する永続的なパーソナルエージェントになります。"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://hermes-agent.nousresearch.com" />
+    <meta property="og:url" content="https://hermes-agent.org/ja/" />
     <meta
       property="og:image"
-      content="https://hermes-agent.nousresearch.com/hermes-agent-banner.png"
+      content="https://hermes-agent.org/hermes-agent-banner.png"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -33,12 +33,17 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
       defer
     ></script>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="lang-switcher.css" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../lang-switcher.css" />
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+    <style>
+      body {
+        font-family: 'Noto Sans JP', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+    </style>
   </head>
   <body>
     <canvas id="noise-overlay"></canvas>
@@ -48,16 +53,16 @@
 
     <nav class="nav">
       <div class="nav-inner">
-        <a href="#" class="nav-logo">
-          <img src="nous-logo.png" alt="Nous Research" class="nav-nous-logo" />
+        <a href="/ja/" class="nav-logo">
+          <img src="../nous-logo.png" alt="Nous Research" class="nav-nous-logo" />
           <span class="nav-brand"
             >Hermes Agent <span class="nav-by">by Nous Research</span></span
           >
         </a>
         <div class="nav-links">
-          <a href="#install">Install</a>
-          <a href="#features">Features</a>
-          <a href="/docs/">Docs</a>
+          <a href="#install">インストール</a>
+          <a href="#features">機能</a>
+          <a href="/docs/">ドキュメント</a>
           <a
             href="https://github.com/NousResearch/hermes-agent"
             target="_blank"
@@ -71,49 +76,50 @@
             >Discord</a
           >
           <div class="lang-switcher">
-            <button class="lang-btn" onclick="toggleLangMenu()" aria-label="Switch language">
+            <button class="lang-btn" onclick="toggleLangMenu()" aria-label="言語切替">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"/>
                 <line x1="2" y1="12" x2="22" y2="12"/>
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
               </svg>
-              EN
+              JA
             </button>
             <div class="lang-menu" id="lang-menu">
-              <a href="/" class="active">English</a>
-              <a href="/ja/">日本語</a>
+              <a href="/">English</a>
+              <a href="/ja/" class="active">日本語</a>
             </div>
           </div>
         </div>
         <div class="nav-right-mobile">
           <div class="lang-switcher">
-            <button class="lang-btn" onclick="toggleLangMenu()" aria-label="Switch language">
+            <button class="lang-btn" onclick="toggleLangMenu()" aria-label="言語切替">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"/>
                 <line x1="2" y1="12" x2="22" y2="12"/>
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
               </svg>
-              EN
+              JA
             </button>
             <div class="lang-menu" id="lang-menu-mobile">
-              <a href="/" class="active">English</a>
-              <a href="/ja/">日本語</a>
+              <a href="/">English</a>
+              <a href="/ja/" class="active">日本語</a>
             </div>
           </div>
           <button
-          class="nav-hamburger"
-          id="nav-hamburger"
-          onclick="toggleMobileNav()"
-          aria-label="Toggle menu"
-        >
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-        </button>
+            class="nav-hamburger"
+            id="nav-hamburger"
+            onclick="toggleMobileNav()"
+            aria-label="メニューを開く"
+          >
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+        </div>
         <div class="nav-mobile" id="nav-mobile">
-          <a href="#install" onclick="toggleMobileNav()">Install</a>
-          <a href="#features" onclick="toggleMobileNav()">Features</a>
-          <a href="/docs/">Docs</a>
+          <a href="#install" onclick="toggleMobileNav()">インストール</a>
+          <a href="#features" onclick="toggleMobileNav()">機能</a>
+          <a href="/docs/">ドキュメント</a>
           <a
             href="https://github.com/NousResearch/hermes-agent"
             target="_blank"
@@ -134,29 +140,28 @@
       <div class="hero-content">
         <div class="hero-badge">
           <span class="badge-dot"></span>
-          Open Source &bull; MIT License
+          オープンソース &bull; MITライセンス
         </div>
 
         <!-- prettier-ignore -->
         <pre class="hero-ascii" aria-hidden="true" style="font-family: monospace; line-height: 1.1">
 ██╗  ██╗███████╗██████╗ ███╗   ███╗███████╗███████╗     █████╗  ██████╗ ███████╗███╗   ██╗████████╗
 ██║  ██║██╔════╝██╔══██╗████╗ ████║██╔════╝██╔════╝    ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝
-███████║█████╗  ██████╔╝██╔████╔██║█████╗  ███████╗    ███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║   
-██╔══██║██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══╝  ╚════██║    ██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║   
-██║  ██║███████╗██║  ██║██║ ╚═╝ ██║███████╗███████║    ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║   
-╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝    ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝   
+███████║█████╗  ██████╔╝██╔████╔██║█████╗  ███████╗    ███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║
+██╔══██║██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══╝  ╚════██║    ██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║
+██║  ██║███████╗██║  ██║██║ ╚═╝ ██║███████╗███████║    ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║
+╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝    ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝
 </pre>
 
         <h1 class="hero-title">
-          An agent that<br />
-          <span class="hero-gradient">grows with you.</span>
+          あなたと共に<br />
+          <span class="hero-gradient">成長するエージェント。</span>
         </h1>
 
         <p class="hero-subtitle">
-          It's not a coding copilot tethered to an IDE or a chatbot wrapper
-          around a single API. It's an <strong>autonomous agent</strong> that
-          lives on your server, remembers what it learns, and gets more capable
-          the longer it runs.
+          IDEに紐づくコーディングアシスタントでも、単一APIのチャットボットラッパーでもありません。
+          あなたのサーバーに常駐し、学んだことを記憶し、稼働するほどに賢くなる
+          <strong>自律型エージェント</strong>です。
         </p>
 
         <div class="hero-install">
@@ -187,7 +192,7 @@
               <button
                 class="copy-btn"
                 onclick="copyInstall()"
-                title="Copy to clipboard"
+                title="クリップボードにコピー"
               >
                 <svg
                   width="16"
@@ -204,13 +209,12 @@
                     d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
                   />
                 </svg>
-                <span class="copy-text">Copy</span>
+                <span class="copy-text">コピー</span>
               </button>
             </div>
           </div>
           <p class="install-note" id="install-note">
-            Works on Linux, macOS & WSL2 · No prerequisites · Installs
-            everything automatically
+            Linux、macOS、WSL2で動作 · 前提条件なし · すべて自動インストール
           </p>
         </div>
 
@@ -235,7 +239,7 @@
               <polyline points="10 17 15 12 10 7" />
               <line x1="15" y1="12" x2="3" y2="12" />
             </svg>
-            Sign Up on Nous Portal
+            Nous Portalに登録
           </a>
         </div>
       </div>
@@ -244,14 +248,14 @@
     <section class="section section-install" id="install">
       <div class="container">
         <div class="section-header">
-          <h2>Get started in 60 seconds</h2>
+          <h2>60秒でスタート</h2>
         </div>
 
         <div class="install-steps">
           <div class="install-step">
             <div class="step-number">1</div>
             <div class="step-content">
-              <h4>Install</h4>
+              <h4>インストール</h4>
               <div class="code-block">
                 <div class="code-header">
                   <div class="code-tabs">
@@ -269,14 +273,13 @@
                     onclick="copyText(this)"
                     data-text="curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash"
                   >
-                    Copy
+                    コピー
                   </button>
                 </div>
                 <pre><code id="step1-command">curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash</code></pre>
               </div>
               <p class="step-note" id="step1-note">
-                Installs uv, Python 3.11, clones the repo, sets up everything.
-                No sudo needed.
+                uv、Python 3.11をインストールし、リポジトリをクローンしてすべてをセットアップします。sudoは不要です。
               </p>
             </div>
           </div>
@@ -284,7 +287,7 @@
           <div class="install-step">
             <div class="step-number">2</div>
             <div class="step-content">
-              <h4>Configure</h4>
+              <h4>設定</h4>
               <div class="code-block">
                 <div class="code-header">
                   <span>bash</span>
@@ -293,18 +296,17 @@
                     onclick="copyText(this)"
                     data-text="hermes setup"
                   >
-                    Copy
+                    コピー
                   </button>
                 </div>
-                <pre><code><span class="code-comment"># Interactive setup wizard</span>
+                <pre><code><span class="code-comment"># 対話式セットアップウィザード</span>
 hermes setup
 
-<span class="code-comment"># Or choose your model</span>
+<span class="code-comment"># またはモデルを選択</span>
 hermes model</code></pre>
               </div>
               <p class="step-note">
-                Connect to Nous Portal (OAuth), OpenRouter (API key), or your
-                own endpoint.
+                Nous Portal（OAuth）、OpenRouter（APIキー）、または独自のエンドポイントに接続します。
               </p>
             </div>
           </div>
@@ -312,7 +314,7 @@ hermes model</code></pre>
           <div class="install-step">
             <div class="step-number">3</div>
             <div class="step-content">
-              <h4>Start chatting</h4>
+              <h4>チャット開始</h4>
               <div class="code-block">
                 <div class="code-header">
                   <span>bash</span>
@@ -321,13 +323,13 @@ hermes model</code></pre>
                     onclick="copyText(this)"
                     data-text="hermes"
                   >
-                    Copy
+                    コピー
                   </button>
                 </div>
                 <pre><code>hermes</code></pre>
               </div>
               <p class="step-note">
-                That's it. Full interactive CLI with tools, memory, and skills.
+                これだけです。ツール、メモリ、スキルを備えた完全な対話型CLIが起動します。
               </p>
             </div>
           </div>
@@ -336,7 +338,7 @@ hermes model</code></pre>
             <div class="step-number">4</div>
             <div class="step-content">
               <h4>
-                Go multi-platform <span class="step-optional">(optional)</span>
+                マルチプラットフォーム対応 <span class="step-optional">（オプション）</span>
               </h4>
               <div class="code-block">
                 <div class="code-header">
@@ -346,21 +348,20 @@ hermes model</code></pre>
                     onclick="copyText(this)"
                     data-text="hermes gateway setup"
                   >
-                    Copy
+                    コピー
                   </button>
                 </div>
-                <pre><code><span class="code-comment"># Interactive gateway setup wizard</span>
+                <pre><code><span class="code-comment"># 対話式ゲートウェイセットアップウィザード</span>
 hermes gateway setup
 
-<span class="code-comment"># Start the messaging gateway</span>
+<span class="code-comment"># メッセージングゲートウェイを起動</span>
 hermes gateway
 
-<span class="code-comment"># Install as a system service</span>
+<span class="code-comment"># システムサービスとしてインストール</span>
 hermes gateway install</code></pre>
               </div>
               <p class="step-note">
-                Walk through connecting Telegram, Discord, Slack, or WhatsApp.
-                Runs as a systemd service.
+                Telegram、Discord、Slack、WhatsAppへの接続をガイドします。systemdサービスとして動作します。
               </p>
             </div>
           </div>
@@ -368,7 +369,7 @@ hermes gateway install</code></pre>
           <div class="install-step">
             <div class="step-number">5</div>
             <div class="step-content">
-              <h4>Keep it up to date</h4>
+              <h4>最新状態を維持</h4>
               <div class="code-block">
                 <div class="code-header">
                   <span>bash</span>
@@ -377,14 +378,13 @@ hermes gateway install</code></pre>
                     onclick="copyText(this)"
                     data-text="hermes update"
                   >
-                    Copy
+                    コピー
                   </button>
                 </div>
                 <pre><code>hermes update</code></pre>
               </div>
               <p class="step-note">
-                Pulls the latest changes and reinstalls dependencies. Run
-                anytime to get new features and fixes.
+                最新の変更をプルし、依存関係を再インストールします。いつでも実行して新機能やバグ修正を取得できます。
               </p>
             </div>
           </div>
@@ -392,15 +392,14 @@ hermes gateway install</code></pre>
 
         <div class="install-windows">
           <p>
-            Native Windows support is extremely experimental and unsupported.
-            Please install
+            ネイティブWindows対応は非常に実験的で、サポート対象外です。
             <a
-              href="https://learn.microsoft.com/en-us/windows/wsl/install"
+              href="https://learn.microsoft.com/ja-jp/windows/wsl/install"
               target="_blank"
               rel="noopener"
               >WSL2</a
             >
-            and run Hermes Agent from there.
+            をインストールし、そこからHermes Agentを実行してください。
           </p>
         </div>
       </div>
@@ -410,7 +409,7 @@ hermes gateway install</code></pre>
     <section class="section section-demo" id="demo">
       <div class="container">
         <div class="section-header">
-          <h2>See it in action</h2>
+          <h2>動作デモ</h2>
         </div>
 
         <div class="terminal-window">
@@ -431,7 +430,7 @@ hermes gateway install</code></pre>
     <section class="section" id="features">
       <div class="container">
         <div class="section-header">
-          <h2>Features</h2>
+          <h2>機能</h2>
         </div>
 
         <div class="features-grid">
@@ -453,11 +452,10 @@ hermes gateway install</code></pre>
                   />
                 </svg>
               </div>
-              <h3>Lives Where You Do</h3>
+              <h3>あなたのいる場所に</h3>
             </div>
             <p>
-              Telegram, Discord, Slack, WhatsApp, and CLI from a single gateway
-              — start on one, pick up on another.
+              Telegram、Discord、Slack、WhatsApp、CLIを単一のゲートウェイから — ひとつで始めて、別のプラットフォームで続けられます。
             </p>
           </div>
 
@@ -478,11 +476,10 @@ hermes gateway install</code></pre>
                   <polyline points="16 7 22 7 22 13" />
                 </svg>
               </div>
-              <h3>Grows the Longer It Runs</h3>
+              <h3>使うほどに賢くなる</h3>
             </div>
             <p>
-              Persistent memory and auto-generated skills — it learns your
-              projects and never forgets how it solved a problem.
+              永続的なメモリと自動生成スキル — プロジェクトを学習し、問題の解決方法を決して忘れません。
             </p>
           </div>
 
@@ -503,11 +500,10 @@ hermes gateway install</code></pre>
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
               </div>
-              <h3>Scheduled Automations</h3>
+              <h3>スケジュール自動化</h3>
             </div>
             <p>
-              Natural language cron scheduling for reports, backups, and
-              briefings — running unattended through the gateway.
+              自然言語によるcronスケジューリングでレポート、バックアップ、ブリーフィングを自動実行 — ゲートウェイを通じて無人で動作します。
             </p>
           </div>
 
@@ -530,11 +526,10 @@ hermes gateway install</code></pre>
                   <path d="M18 3v12a9 9 0 0 1-9-9" />
                 </svg>
               </div>
-              <h3>Delegates & Parallelizes</h3>
+              <h3>委譲と並列実行</h3>
             </div>
             <p>
-              Isolated subagents with their own conversations, terminals, and
-              Python RPC scripts for zero-context-cost pipelines.
+              独自の会話、ターミナル、Python RPCスクリプトを持つ分離されたサブエージェントで、コンテキストコストゼロのパイプラインを実現します。
             </p>
           </div>
 
@@ -555,11 +550,10 @@ hermes gateway install</code></pre>
                   <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                 </svg>
               </div>
-              <h3>Real Sandboxing</h3>
+              <h3>本格的なサンドボックス</h3>
             </div>
             <p>
-              Five backends — local, Docker, SSH, Singularity, Modal — with
-              container hardening and namespace isolation.
+              ローカル、Docker、SSH、Singularity、Modalの5つのバックエンド — コンテナ強化とネームスペース分離を備えています。
             </p>
           </div>
 
@@ -583,18 +577,17 @@ hermes gateway install</code></pre>
                   />
                 </svg>
               </div>
-              <h3>Full Web & Browser Control</h3>
+              <h3>Web・ブラウザ制御</h3>
             </div>
             <p>
-              Web search, browser automation, vision, image generation,
-              text-to-speech, and multi-model reasoning.
+              Web検索、ブラウザ自動操作、ビジョン、画像生成、テキスト読み上げ、マルチモデル推論に対応。
             </p>
           </div>
         </div>
 
         <div class="features-more">
           <button class="more-toggle" onclick="toggleSpecs()" id="specs-toggle">
-            <span class="toggle-label">More details</span>
+            <span class="toggle-label">詳細を見る</span>
             <svg
               class="more-chevron"
               width="16"
@@ -614,63 +607,53 @@ hermes gateway install</code></pre>
         <div class="specs-wrapper" id="specs-wrapper">
           <div class="specs-list">
             <div class="spec-row">
-              <h3 class="spec-label">Tools</h3>
+              <h3 class="spec-label">ツール</h3>
               <p class="spec-value">
-                40+ built-in — web search, terminal, file system, browser
-                automation, vision, image generation, text-to-speech, code
-                execution, subagent delegation, memory, task planning, cron
-                scheduling, multi-model reasoning, and more.
+                40以上の組み込みツール — Web検索、ターミナル、ファイルシステム、ブラウザ自動操作、ビジョン、画像生成、テキスト読み上げ、コード実行、サブエージェント委譲、メモリ、タスク計画、cronスケジューリング、マルチモデル推論など。
               </p>
             </div>
 
             <div class="spec-row">
-              <h3 class="spec-label">Platforms</h3>
+              <h3 class="spec-label">プラットフォーム</h3>
               <p class="spec-value">
-                Telegram, Discord, Slack, WhatsApp, Signal, Email, and CLI — all
-                from a single gateway. Connect to
+                Telegram、Discord、Slack、WhatsApp、Signal、Email、CLI — すべて単一のゲートウェイから。
                 <a
                   href="https://portal.nousresearch.com"
                   target="_blank"
                   rel="noopener"
                   >Nous Portal</a
-                >, OpenRouter, or any OpenAI-compatible API.
+                >、OpenRouter、または任意のOpenAI互換APIに接続可能。
               </p>
             </div>
 
             <div class="spec-row">
-              <h3 class="spec-label">Environments</h3>
+              <h3 class="spec-label">実行環境</h3>
               <p class="spec-value">
-                Run locally, in Docker, over SSH, on Modal, Daytona, or
-                Singularity. Container hardening with read-only root, dropped
-                capabilities, and namespace isolation.
+                ローカル、Docker、SSH経由、Modal、Daytona、またはSingularityで実行。読み取り専用ルート、ケイパビリティ削除、ネームスペース分離によるコンテナ強化。
               </p>
             </div>
 
             <div class="spec-row">
-              <h3 class="spec-label">Skills</h3>
+              <h3 class="spec-label">スキル</h3>
               <p class="spec-value">
-                40+ bundled skills covering MLOps, GitHub workflows, research,
-                and more. The agent creates new skills on the fly and shares
-                them via the open
+                MLOps、GitHubワークフロー、リサーチなどをカバーする40以上のバンドルスキル。エージェントはオープンな
                 <a href="https://agentskills.io" target="_blank" rel="noopener"
                   >agentskills.io</a
                 >
-                format. Install community skills from
+                フォーマットで新しいスキルを動的に作成・共有。
                 <a href="https://clawhub.ai" target="_blank" rel="noopener"
                   >ClawHub</a
-                >,
+                >、
                 <a href="https://lobehub.com" target="_blank" rel="noopener"
                   >LobeHub</a
-                >, and GitHub.
+                >、GitHubからコミュニティスキルをインストール可能。
               </p>
             </div>
 
             <div class="spec-row">
-              <h3 class="spec-label">Research</h3>
+              <h3 class="spec-label">研究</h3>
               <p class="spec-value">
-                Batch trajectory generation with parallel workers and
-                checkpointing. Atropos integration for RL training. Export to
-                ShareGPT for fine-tuning with trajectory compression.
+                並列ワーカーとチェックポイントによるバッチトラジェクトリ生成。RL訓練のためのAtropos統合。トラジェクトリ圧縮によるShareGPTフォーマットでのファインチューニング用エクスポート。
               </p>
             </div>
           </div>
@@ -681,15 +664,14 @@ hermes gateway install</code></pre>
     <footer class="footer">
       <div class="container">
         <p class="footer-copy">
-          Built by
           <a href="https://nousresearch.com" target="_blank" rel="noopener"
             >Nous Research</a
           >
-          &middot; MIT License &middot; 2026
+          製 &middot; MITライセンス &middot; 2026
         </p>
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
   </body>
 </html>
