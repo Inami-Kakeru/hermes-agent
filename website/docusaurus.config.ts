@@ -7,7 +7,7 @@ const config: Config = {
   tagline: 'The self-improving AI agent',
   favicon: 'img/favicon.ico',
 
-  url: 'https://hermes-agent.nousresearch.com',
+  url: 'https://hermes-agent.org',
   baseUrl: '/docs/',
 
   organizationName: 'NousResearch',
@@ -90,7 +90,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://hermes-agent.nousresearch.com',
+          href: 'https://hermes-agent.org',
           label: 'Home',
           position: 'right',
         },
