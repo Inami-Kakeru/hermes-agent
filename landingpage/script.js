@@ -126,7 +126,7 @@ function copyText(btn) {
 function initScrollAnimations() {
   const elements = document.querySelectorAll(
     ".feature-card, .install-step, " +
-      ".section-header, .terminal-window",
+      ".section-header, .terminal-window, .stat-card",
   );
 
   elements.forEach((el) => el.classList.add("fade-in"));
@@ -503,6 +503,39 @@ document.addEventListener('click', function(e) {
   }
 });
 
+// --- GitHub Stats ---
+function fetchGitHubStats() {
+  var starsEl = document.getElementById('gh-stars');
+  var contribEl = document.getElementById('gh-contributors');
+  if (!starsEl) return;
+
+  var repo = starsEl.getAttribute('data-repo') || 'NousResearch/hermes-agent';
+
+  fetch('https://api.github.com/repos/' + repo)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.stargazers_count !== undefined) {
+        var count = data.stargazers_count;
+        starsEl.textContent = count >= 1000
+          ? (count / 1000).toFixed(1).replace(/\.0$/, '') + 'k'
+          : count.toString();
+      }
+    })
+    .catch(function() {});
+
+  fetch('https://api.github.com/repos/' + repo + '/contributors?per_page=1&anon=true', { method: 'HEAD' })
+    .then(function(r) {
+      var link = r.headers.get('Link');
+      if (link) {
+        var match = link.match(/page=(\d+)>; rel="last"/);
+        if (match && contribEl) {
+          contribEl.textContent = match[1] + '+';
+        }
+      }
+    })
+    .catch(function() {});
+}
+
 // --- Initialize ---
 document.addEventListener("DOMContentLoaded", () => {
   const detectedPlatform = detectPlatform();
@@ -510,6 +543,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initScrollAnimations();
   initNoiseOverlay();
+  fetchGitHubStats();
 
   const terminalEl = document.getElementById("terminal-demo");
 
