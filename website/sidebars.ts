@@ -10,6 +10,7 @@ const sidebars: SidebarsConfig = {
         'getting-started/quickstart-ja',
         'user-guide/cli-ja',
         'user-guide/configuration-ja',
+        'user-guide/messaging-ja',
       ],
     },
     {
