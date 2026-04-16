@@ -104,6 +104,11 @@ const config: Config = {
           label: 'Discord',
           position: 'right',
         },
+        {
+          href: 'https://hermes-agent.org/ja/',
+          label: '日本語',
+          position: 'right',
+        },
       ],
     },
     footer: {

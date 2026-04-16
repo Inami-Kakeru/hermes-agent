@@ -1,0 +1,116 @@
+name: "🐛 バグ報告（日本語）"
+description: バグの報告 — 壊れている、クラッシュする、または正しく動作しないもの。
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        バグの報告ありがとうございます！再現と修正を迅速に行うため、以下のセクションを記入してください。
+
+        **提出前に確認してください：**
+        - [ ] [既存のIssue](https://github.com/NousResearch/hermes-agent/issues)を検索して重複を避ける
+        - [ ] 最新バージョンに更新（`hermes update`）し、バグがまだ存在することを確認
+        - [ ] `hermes debug share`を実行し、リンクを下に貼り付ける
+
+  - type: textarea
+    id: description
+    attributes:
+      label: バグの説明
+      description: 何が壊れているかの明確な説明。エラーメッセージ、トレースバック、スクリーンショットがあれば含めてください。
+      placeholder: |
+        何が起きましたか？代わりに何が起きるべきでしたか？
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 再現手順
+      description: バグを発生させる最小限の手順。具体的であるほど、修正が速くなります。
+      placeholder: |
+        1. `hermes chat`を実行
+        2. メッセージ「...」を送信
+        3. エージェントがツールXを呼び出す
+        4. エラーが表示される: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待される動作
+      description: 代わりに何が起きるべきでしたか？
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 実際の動作
+      description: 実際に何が起きましたか？利用可能であれば完全なエラー出力を含めてください。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: 影響を受けるコンポーネント
+      description: Hermesのどの部分が影響を受けていますか？
+      multiple: true
+      options:
+        - CLI（対話型チャット）
+        - ゲートウェイ（Telegram/Discord/Slack/WhatsApp）
+        - セットアップ / インストール
+        - ツール（ターミナル、ファイル操作、Web、コード実行など）
+        - スキル（スキル読み込み、スキルハブ、スキルガード）
+        - エージェントコア（会話ループ、コンテキスト圧縮、メモリ）
+        - 設定（config.yaml、.env、hermes setup）
+        - その他
+    validations:
+      required: true
+
+  - type: textarea
+    id: debug-report
+    attributes:
+      label: デバッグレポート
+      description: |
+        ターミナルから`hermes debug share`を実行し、出力されたリンクをここに貼り付けてください。
+        アップロードが失敗した場合は、`hermes debug share --local`を実行して出力を直接貼り付けてください。
+      placeholder: |
+        Report   https://paste.rs/abc123
+        agent.log   https://paste.rs/def456
+        gateway.log   https://paste.rs/ghi789
+      render: shell
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: オペレーティングシステム
+      description: 例：Ubuntu 24.04, macOS 15.2, Windows 11
+      placeholder: Ubuntu 24.04
+    validations:
+      required: true
+
+  - type: input
+    id: hermes-version
+    attributes:
+      label: Hermesバージョン
+      description: "`hermes version`の出力"
+      placeholder: "2.1.0"
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 追加ログ / トレースバック（任意）
+      description: デバッグレポートでカバーされていない追加のエラー出力やスクリーンショット。
+      render: shell
+
+  - type: checkboxes
+    id: pr-ready
+    attributes:
+      label: PRの提出意向
+      options:
+        - label: 自分で修正してPRを提出したい
