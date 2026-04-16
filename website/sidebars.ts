@@ -4,6 +4,16 @@ const sidebars: SidebarsConfig = {
   docs: [
     {
       type: 'category',
+      label: '日本語ガイド',
+      collapsed: true,
+      items: [
+        'getting-started/quickstart-ja',
+        'user-guide/cli-ja',
+        'user-guide/configuration-ja',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Getting Started',
       collapsed: true,
       items: [
