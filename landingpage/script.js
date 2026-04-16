@@ -490,6 +490,19 @@ document.addEventListener('click', function(e) {
   }
 });
 
+// Record manual language choice to prevent auto-redirect
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('.lang-menu a');
+  if (link) {
+    var href = link.getAttribute('href');
+    if (href === '/ja/') {
+      localStorage.setItem('hermes-lang', 'ja');
+    } else if (href === '/') {
+      localStorage.setItem('hermes-lang', 'en');
+    }
+  }
+});
+
 // --- Initialize ---
 document.addEventListener("DOMContentLoaded", () => {
   const detectedPlatform = detectPlatform();

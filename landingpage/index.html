@@ -696,5 +696,16 @@ hermes gateway install</code></pre>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+      // Auto-redirect Japanese browsers (once, respecting manual choice)
+      (function() {
+        if (localStorage.getItem('hermes-lang')) return;
+        var lang = navigator.language || navigator.userLanguage || '';
+        if (lang.substring(0, 2) === 'ja') {
+          localStorage.setItem('hermes-lang', 'ja');
+          window.location.href = '/ja/';
+        }
+      })();
+    </script>
   </body>
 </html>
