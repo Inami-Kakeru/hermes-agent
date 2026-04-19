@@ -11,6 +11,7 @@ const sidebars: SidebarsConfig = {
         'user-guide/cli-ja',
         'user-guide/configuration-ja',
         'user-guide/messaging-ja',
+        'user-guide/features/skills-memory-ja',
       ],
     },
     {
